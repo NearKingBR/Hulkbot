@@ -109,7 +109,7 @@ bot.on("message", message => {
     message.channel.send("O Deus, outro não ^^ ");
   }
   
-  if (message.isMentioned("${process.env.botID}")) {
+  if (message.isMentioned("563766286631305240")) {
     const em = new discord.RichEmbed()
     .setTitle(`Night Intro`)
     .setDescription(`EI! Bem-vindo à minha introdução! Para ajuda, use =help! Para Mais Informações, use =info!`)

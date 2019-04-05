@@ -8,19 +8,19 @@ bot = new discord.Client()
 var prefix = process.env.prefix,
 {baselogger} = require('./src/logger.js'),
 result = Math.round(Math.random()),
-updates = ["Work command added.", "MongoDB is now Hulkbot's official database provider."],
-webhookchannelid = "441710517460008960",
+updates = ["Work command added.", "MongoDB is now night's official database provider."],
+webhookchannelid = "563779105011793923",
 cleverbot = require('cleverbot.io'),
 ms = require('ms'),
 snekfetch = require('snekfetch'),
-cb = new cleverbot("sMNApmkOjMlZRlPZ", "gskxw3JBqEVGIAboBjOnvyTf8awM1MbS")
+cb = new cleverbot("HkX1xk1bFs2tWcOz", "SQUj72Niqa7z0aPywQkVL4V8K7FCqJSY")
 config.updates = updates.join(' ')
-require('mongoose').connect(`mongodb+srv://Hulkbot:${process.env.mongopassword}@hulkbot-2fias.gcp.mongodb.net/test?retryWrites=true`, { useNewUrlParser: true })
+require('mongoose').connect(`mongodb+srv://night:${process.env.mongopassword}@night-cluster-wpayy.mongodb.net/test?retryWrites=true`, { useNewUrlParser: true })
 const gdata = require('./database/mongoose/GuildData')
 // End of init
 
 // The bot's support server invite vvv
-bot.invite = "https://discord.gg/qEFNkxB"
+bot.invite = "https://discord.gg/mpK2HYw"
 // No more invite.
 
 // Gather commands
@@ -41,7 +41,7 @@ require('fs').readdir("./commands/", (err, files) => {
 bot.on("ready", () => {
   require('./util/poststats.js')(bot)
   require('./util/consoles.js')(bot, config)
-  bot.user.setActivity("Loading Hulkbot...", {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
+  bot.user.setActivity("Loading Night...", {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
   // Post bot stats
   snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
     .set('Authorization', process.env.tok)
@@ -50,7 +50,7 @@ bot.on("ready", () => {
     .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
   
   setTimeout(() => {
-    bot.user.setActivity(`for h!help | ${bot.guilds.array().length} servers`, {type: "WATCHING"});
+    bot.user.setActivity(`=help | ${bot.guilds.array().length} servers`, {type: "WATCHING"});
   }, 20000)
 
   bot.guilds.forEach((guild, id) => {
@@ -75,7 +75,7 @@ bot.on("message", message => {
     if (data == null) {
       const newG = new gdata({
         guildId: message.guild.id,
-        prefix: "h!",
+        prefix: "=",
         isPremium: false,
         welcome: null,
         modlog: null,
@@ -105,14 +105,14 @@ bot.on("message", message => {
       console.log(`${message.author.username} used the ${loggedcmd} command.`);
       baselogger(bot, `**Command Run**\n\n**Command:** ${loggedcmd}\n**User:** ${message.author.tag}\n**Message:** ${message.content}\n**Guild:** ${message.guild.name}\n**Channel:** ${message.channel.name}`);
   } 
-    if (message.content == "i love you hulkbot") {
-    message.channel.send("oh god, not another one");
+    if (message.content == "Eu Amo A Night") {
+    message.channel.send("O Deus, outro não ^^ ");
   }
   
-  if (message.isMentioned("294194506113220608")) {
+  if (message.isMentioned("${process.env.botID}")) {
     const em = new discord.RichEmbed()
-    .setTitle(`Hulkbot Intro`)
-    .setDescription(`Hey! Welcome to my intro! For help, use h!help! For info about me, use h!info!`)
+    .setTitle(`Night Intro`)
+    .setDescription(`EI! Bem-vindo à minha introdução! Para ajuda, use =help! Para Mais Informações, use =info!`)
     .setColor("GREEN")
     .setTimestamp()
     console.log('lol')
@@ -122,23 +122,23 @@ bot.on("message", message => {
       
 bot.on("guildCreate", (guild) => {
   require('./events/guildCreate.js')(bot, guild, discord)
-  baselogger(bot, `**Guild Join**\n\n**Guild:** ${guild.name}\n**Owner:** ${guild.owner.user.username}\n**Large:** ${guild.large}\n**Member Count:** ${guild.memberCount}\n\n**Total Guilds:** ${bot.guilds.array().length}`, guild.iconURL);
+  baselogger(bot, `**Server Join**\n\n**Server:** ${guild.name}\n**Owner:** ${guild.owner.user.username}\n**Large:** ${guild.large}\n**Member Count:** ${guild.memberCount}\n\n**Total servers:** ${bot.guilds.array().length}`, guild.iconURL);
 });
 
 bot.on("guildDelete", (guild) => {
   require('./events/guildDelete.js')(bot, guild, discord)
-  baselogger(bot, `**Guild Leave**\n\n**Guild:** ${guild.name}\n**Owner:** ${guild.owner.user.username}\n**Large:** ${guild.large}\n**Member Count:** ${guild.memberCount}\n\n**Total Guilds:** ${bot.guilds.array().length}`, guild.iconURL);
+  baselogger(bot, `**server saiu**\n\n**Guild:** ${guild.name}\n**Owner:** ${guild.owner.user.username}\n**Large:** ${guild.large}\n**membros total:** ${guild.memberCount}\n\n**Total servers:** ${bot.guilds.array().length}`, guild.iconURL);
 });
 
 bot.login(process.env.botToken); 
 
-let upmsg = `Oh yeah, more updates! New updates:\n${updates}`
+let upmsg = `Hey, Novas Atualizações! New updates:\n${updates}`
   async function senddat(up,msg) {
     if (up == null) return;
-   await bot.channels.get('441982405985828864').send(msg).then(() => {
+   await bot.channels.get('563779105011793923').send(msg).then(() => {
      up.pop(up)
    })
-   await bot.channels.get('441982440005697539').send(msg).then(() => {
+   await bot.channels.get('563779239808335904').send(msg).then(() => {
      up.pop(up)
    })
   }

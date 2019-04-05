@@ -1,13 +1,13 @@
 { 
-  "prefix": "h!",
-  "admins": ["356248091227324426", "251928361851551756", "140487710727995392", "215689512058224640"],
+  "prefix": "=",
+  "admins": ["235075700262961152","235075700262961152"],
   "version": "1.2.0",
   "banreason": "",
   "kickreason": "",
-  "Developers": ["FHGDev,", "RHG,", "and NovalFuzzy."],
+  "Developers": ["Near,", "Márcio"],
   "premiumState": "false",
   "donotAnnounce": ["264445053596991498", "110373943822540800"],
   "updates": ["Autoroles!"],
   "userblacklist": [""],
-  "owners": ["242734840829575169", "482326304381730826"]
+  "owners": ["235075700262961152", "235075700262961152"]
 }
